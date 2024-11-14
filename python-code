@@ -1,0 +1,60 @@
+''' Author: Owen Fugger, Date: 11-06-2024 '''
+
+""" The Collatz Conjecture, also known as the 3n+1 problem, 
+states that applying the 3n+1 algorithm to any positive 
+integer will always end up with the number 1. """
+
+import matplotlib.pyplot as plt
+
+def main():
+    """The start of the script"""
+    # User input
+    num1 = int(input("What would you like the starting number to be?: "))
+
+    # Make sure term is positive  
+    while num1 <= 0:
+        num1 = int(input("Please input a number other than 0: "))
+    
+    math(num1)
+
+
+def math(num1):
+    """All the operations to do until it reaches zero"""
+    while num1 != 1:
+        y.append(num1)
+        if num1 % 2 == 0:
+            num2 = num1 // 2
+        else:
+            num2 = 3 * num1 + 1
+        num1 = num2
+    
+    # Cant seem to get it to show 1 at the end so I added it
+    y.append(1)
+    
+    # Call the functions to finish off the displays
+    graph()
+    display()
+
+
+def display():
+    """When the end of the equation happens and explanation"""
+    print("\n", *y)
+    
+    print("""
+    Since it hit 1, it will keep looping between 1, 2 and 4 forever.
+    That is the main idea of this function.
+          """)
+
+
+def graph():
+    """Settings for the graph display"""
+    plt.plot(y, marker='o', linestyle='-', color='b')
+    plt.title('Collatz Conjecture')
+    plt.xlabel('Sequence')
+    plt.ylabel('Value')
+    plt.grid(True)
+    plt.show()
+
+# List of values to keep track of
+y = []
+main()
